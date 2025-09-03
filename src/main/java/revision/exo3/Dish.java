@@ -1,5 +1,7 @@
 package revision.exo3;
 
+import java.time.Instant;
+import java.util.Comparator;
 import java.util.List;
 
 public class Dish {
@@ -22,5 +24,13 @@ public class Dish {
 
   public double getCurrentPrice() {
     return priceRecordList.getLast().getPrice();
+  }
+
+  public double getPriceAtAnInstant(Instant date) {
+    return priceRecordList.stream()
+        .filter(priceRecord -> priceRecord.getDate().isBefore(date))
+        .max(Comparator.comparing(PriceRecord::getDate))
+        .map(PriceRecord::getPrice)
+        .get();
   }
 }
