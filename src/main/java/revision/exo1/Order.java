@@ -50,5 +50,13 @@ public class Order {
         return dishes;
     }
 
+    public double totalPrice(){
+        double total = 0;
+        for(OrderDish dish : orderedDishes){
+            total += dish.getDish().getPrice() * dish.getQuantity();
+        }
+        return total;
+    }
+
 
 }
