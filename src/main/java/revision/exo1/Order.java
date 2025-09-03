@@ -2,6 +2,7 @@ package revision.exo1;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 public class Order {
@@ -39,6 +40,14 @@ public class Order {
 
     public boolean isOrderEmpty(){
         return orderedDishes.isEmpty();
+    }
+
+    public HashMap<OrderDish, Integer> getOrderedDishes(){
+        HashMap<OrderDish, Integer> dishes = new HashMap<>();
+        for(OrderDish dish : orderedDishes){
+            dishes.put(dish, dishes.getOrDefault(dish, dish.getQuantity()) + dish.getQuantity());
+        }
+        return dishes;
     }
 
 
