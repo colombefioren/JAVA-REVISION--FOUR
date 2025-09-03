@@ -1,6 +1,7 @@
 package revision.exo3;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -12,6 +13,15 @@ public class Dish {
   public Dish(int id, String name) {
     this.id = id;
     this.name = name;
+    this.priceRecordList = new ArrayList<>();
+  }
+
+  public List<PriceRecord> getPriceRecordList() {
+    return priceRecordList;
+  }
+
+  public void setPriceRecordList(List<PriceRecord> priceRecordList) {
+    this.priceRecordList = priceRecordList;
   }
 
   public int getId() {
