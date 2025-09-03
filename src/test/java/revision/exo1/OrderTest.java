@@ -90,4 +90,14 @@ class OrderTest {
         assertEquals(expectedQuantities, order1.getDishesQuantity());
     }
 
+    @Test
+    void test_should_return_total_price_according_to_its_type_ok(){
+        assertEquals(20,order1.totalPriceOfTypeDish(DishType.MAIN));
+    }
+
+    @Test
+    void test_should_return_most_expense_dish_ok(){
+        assertEquals(10,order1.getMostExpenseDish());
+    }
+
 }
