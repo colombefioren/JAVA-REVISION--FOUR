@@ -9,13 +9,17 @@ public class Order {
     private final int id;
     private final LocalDate orderDate;
     private final Client client;
-    private final List<OrderDish> orderedDishes;
+    private List<OrderDish> orderedDishes;
 
 
     public Order(int id, LocalDate orderDate, Client client, List<OrderDish> orderedDishes) {
         this.id = id;
         this.orderDate = orderDate;
         this.client = client;
+        this.orderedDishes = orderedDishes;
+    }
+
+    public void setOrderedDishes(List<OrderDish> orderedDishes) {
         this.orderedDishes = orderedDishes;
     }
 
