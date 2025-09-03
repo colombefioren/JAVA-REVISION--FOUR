@@ -19,4 +19,8 @@ public class Dish {
   public String getName() {
     return name;
   }
+
+  public double getCurrentPrice(){
+    return priceRecordList.getLast().getPrice();
+  }
 }
