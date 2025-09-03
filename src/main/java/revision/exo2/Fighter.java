@@ -3,6 +3,7 @@ package revision.exo2;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class Fighter {
   private final String id;
@@ -46,5 +47,18 @@ public class Fighter {
 
   public List<String> getTitleList() {
     return titleList;
+  }
+
+  @Override
+  public boolean equals(Object obj){
+    if(obj == null || getClass() != obj.getClass()) return false;
+    if (obj.equals(this)) return true;
+    Fighter other = (Fighter) obj;
+    return id.equals(other.getId());
+  }
+
+  @Override
+  public int hashCode(){
+    return Objects.hash(id,name);
   }
 }

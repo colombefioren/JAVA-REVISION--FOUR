@@ -46,13 +46,24 @@ public class LeagueMatch {
     switch (typeMatch.toLowerCase()) {
       case "official":
         return new OfficialMatch(idMatch, LocalDate.now(), place, fighter1, fighter2);
-        case "friendly":
+      case "friendly":
         return new FriendlyMatch(idMatch, LocalDate.now(), place, fighter1, fighter2);
-        case "titlematch":
+      case "titlematch":
       case "title match":
         return new TitleMatch(idMatch, LocalDate.now(), place, fighter1, fighter2);
-        default:
+      default:
         throw new IllegalArgumentException("Unknown match type");
     }
   }
+
+  public List<FriendlyMatch> getEveryMatchOfFighter(Fighter fighter){
+      List<FriendlyMatch> matchesOfFighter = new ArrayList<>();
+      for(FriendlyMatch match : matches){
+          if(match.getFighter1().equals(fighter) || match.getFighter2().equals(fighter)){
+              matchesOfFighter.add(match);
+          }
+      }
+      return matchesOfFighter;
+  }
 }
+
