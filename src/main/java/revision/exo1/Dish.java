@@ -1,5 +1,6 @@
 package revision.exo1;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Dish {
@@ -15,6 +16,14 @@ public class Dish {
         this.price = price;
         this.type = type;
         this.ingredients = ingredients;
+    }
+
+    public Dish(int id, String name, double price, DishType type) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.type = type;
+        this.ingredients = new ArrayList<>();
     }
 
     public List<Ingredient> getIngredients() {

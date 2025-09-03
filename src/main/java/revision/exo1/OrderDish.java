@@ -1,12 +1,12 @@
 package revision.exo1;
 
-public class orderDish {
+public class OrderDish {
     private final int id;
     private final Dish dish;
     private final Order order;
     private final int quantity;
 
-    public orderDish(int id, Dish dish, Order order, int quantity) {
+    public OrderDish(int id, Dish dish, Order order, int quantity) {
         this.id = id;
         this.dish = dish;
         this.order = order;

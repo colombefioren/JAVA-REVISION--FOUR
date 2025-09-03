@@ -1,17 +1,28 @@
 package revision.exo1;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Order {
     private final int id;
     private final Date orderDate;
     private final Client client;
+    private final List<OrderDish> orderedDishes;
 
+
+    public Order(int id, Date orderDate, Client client, List<OrderDish> orderedDishes) {
+        this.id = id;
+        this.orderDate = orderDate;
+        this.client = client;
+        this.orderedDishes = orderedDishes;
+    }
 
     public Order(int id, Date orderDate, Client client) {
         this.id = id;
         this.orderDate = orderDate;
         this.client = client;
+        this.orderedDishes = new ArrayList<>();
     }
 
     public int getId() {
@@ -25,4 +36,10 @@ public class Order {
     public Client getClient() {
         return client;
     }
+
+    public boolean isOrderEmpty(){
+        return orderedDishes.isEmpty();
+    }
+
+
 }
