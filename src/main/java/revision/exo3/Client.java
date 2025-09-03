@@ -1,5 +1,6 @@
 package revision.exo3;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,5 +47,18 @@ public class Client {
 
   public List<Order> getOrderList() {
     return orderList;
+  }
+
+  public List<Order> getOrderBetweenInstants(Instant instant1, Instant instant2) {
+    List<Order> result = new ArrayList<>();
+    for (Order order : orderList) {
+      Instant orderDate = order.getDateDeCreation();
+      boolean after = (instant1 == null || orderDate.isAfter(instant1));
+      boolean before = (instant2 == null || orderDate.isBefore(instant2));
+      if (after && before) {
+        result.add(order);
+      }
+    }
+    return result;
   }
 }
