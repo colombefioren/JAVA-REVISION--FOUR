@@ -2,6 +2,7 @@ package revision.exo1;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Dish {
     private final int id;
@@ -49,4 +50,19 @@ public class Dish {
     public boolean isIngredientPresent(Ingredient ingredient){
         return ingredients.contains(ingredient);
     }
+
+
+    @Override
+    public boolean equals(Object obj){
+        if(this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Dish other = (Dish) obj;
+        return id == other.id;
+    }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(id,name);
+    }
+
 }

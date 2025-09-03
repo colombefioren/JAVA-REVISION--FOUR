@@ -42,7 +42,11 @@ public class Order {
         return orderedDishes.isEmpty();
     }
 
-    public HashMap<OrderDish, Integer> getOrderedDishes(){
+    public List<OrderDish> getOrderedDishes() {
+        return orderedDishes;
+    }
+
+    public HashMap<OrderDish, Integer> getDishesQuantity(){
         HashMap<OrderDish, Integer> dishes = new HashMap<>();
         for(OrderDish dish : orderedDishes){
             dishes.put(dish, dishes.getOrDefault(dish, dish.getQuantity()) + dish.getQuantity());
@@ -57,6 +61,15 @@ public class Order {
         }
         return total;
     }
+
+    public void combineOrder(Order order){
+      for (OrderDish newDish : order.getOrderedDishes()){
+          for(OrderDish exisitingDish : orderedDishes){
+              if(newDish.getDish() == exisitingDish.getDish())
+          }
+      }
+    }
+
 
 
 }
