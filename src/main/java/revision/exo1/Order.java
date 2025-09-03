@@ -63,19 +63,16 @@ public class Order {
     }
 
     public void combineOrder(Order order){
-        int ancientQuantity = 0;
-        boolean found = false;
       for (OrderDish newOrderDish : order.getOrderedDishes()){
-          found = false;
+          boolean found = false;
           for(OrderDish existingOrderDish : orderedDishes){
-              if(newOrderDish.getDish() == existingOrderDish.getDish()){
+              if(newOrderDish.getDish().equals(existingOrderDish.getDish())){
                   found = true;
-                  ancientQuantity = existingOrderDish.getQuantity();
-                  existingOrderDish.setQuantity(newOrderDish.getQuantity() +  ancientQuantity);
+                  existingOrderDish.setQuantity(newOrderDish.getQuantity() +  existingOrderDish.getQuantity());
                   break;
               }
           }
-          if(found == false){
+          if(!found){
               orderedDishes.add(newOrderDish);
           }
       }
