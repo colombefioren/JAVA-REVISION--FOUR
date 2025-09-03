@@ -20,7 +20,7 @@ public class Dish {
     return name;
   }
 
-  public double getCurrentPrice(){
+  public double getCurrentPrice() {
     return priceRecordList.getLast().getPrice();
   }
 }

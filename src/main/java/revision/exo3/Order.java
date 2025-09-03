@@ -36,4 +36,8 @@ public class Order {
   public List<Dish> getOrderedDishes() {
     return orderedDishes;
   }
+
+  public double getTotalPrice() {
+    return orderedDishes.stream().mapToDouble(Dish::getCurrentPrice).sum();
+  }
 }
