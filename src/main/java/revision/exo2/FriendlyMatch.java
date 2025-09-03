@@ -22,6 +22,10 @@ public class FriendlyMatch {
     this.finished = false;
   }
 
+  public boolean isFinished() {
+    return finished;
+  }
+
   public void setPoint1(int point1) {
     this.point1 = point1;
   }
@@ -29,7 +33,6 @@ public class FriendlyMatch {
   public void setPoint2(int point2) {
     this.point2 = point2;
   }
-
 
   public Fighter getFighter1() {
     return fighter1;
@@ -54,8 +57,6 @@ public class FriendlyMatch {
   public int getPoint2() {
     return point2;
   }
-
-  public void terminer() {}
 
   public String getLocation() {
     return location;

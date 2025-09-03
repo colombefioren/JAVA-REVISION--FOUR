@@ -25,6 +25,17 @@ public class Fighter {
     this.palmares.put("Null", 0);
   }
 
+  public void Victory(){
+    this.palmares.put("Victory", this.palmares.get("Victory") + 1);
+  }
+  public void Defeat(){
+    this.palmares.put("Defeat", this.palmares.get("Defeat") + 1);
+  }
+
+  public void Null(){
+    this.palmares.put("Null", this.palmares.get("Null") + 1);
+  }
+
   public void setTitleList(List<String> titleList) {
     this.titleList = titleList;
   }
