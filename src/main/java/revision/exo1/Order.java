@@ -78,6 +78,16 @@ public class Order {
       }
     }
 
+    public double totalPriceOfTypeDish(DishType type){
+       double totalPrice = 0;
+       for (OrderDish orderDish : orderedDishes){
+           if(orderDish.getDish().getType() == type){
+               totalPrice += orderDish.getDish().getPrice() * orderDish.getQuantity();
+           }
+       }
+       return totalPrice;
+    }
+
     @Override
     public String toString(){
         return "Order{" +
