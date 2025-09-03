@@ -9,7 +9,8 @@ public class FriendlyMatch {
   private final Fighter fighter1;
   private final Fighter fighter2;
 
-  public FriendlyMatch(int id, LocalDate date, String location, Fighter fighter1, Fighter fighter2) {
+  public FriendlyMatch(
+      int id, LocalDate date, String location, Fighter fighter1, Fighter fighter2) {
     this.id = id;
     this.date = date;
     this.location = location;
