@@ -1,8 +1,10 @@
 package revision.exo1;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,12 +20,18 @@ class OrderTest {
     OrderDish orderDish2;
     OrderDish orderDish3;
     OrderDish orderDish4;
+    Ingredient ingredient1;
+    Ingredient ingredient2;
+    Ingredient ingredient3;
 
     @BeforeEach
     void setup(){
-        dish1 = new Dish(1,"Pizza",10,DishType.MAIN);
-        dish2 = new Dish(2,"Sandwich",50,DishType.SNACK);
-        dish3 = new Dish(3,"Burger",100,DishType.MAIN);
+        ingredient1 = new Ingredient(1,"Tomato");
+        ingredient2 = new Ingredient(2,"Cheese");
+        ingredient3 = new Ingredient(3,"Bread");
+        dish1 = new Dish(1,"Pizza",10,DishType.MAIN, Arrays.asList(ingredient1,ingredient2));
+        dish2 = new Dish(2,"Sandwich",50,DishType.SNACK,Arrays.asList(ingredient1,ingredient3));
+        dish3 = new Dish(3,"Burger",100,DishType.MAIN,Collections.singletonList(ingredient2));
         client1 = new Client(1,"John","0612345678");
         client2 = new Client(2,"Jane","0698765432");
         order1 = new Order(1, LocalDate.now(),client1);
@@ -34,7 +42,15 @@ class OrderTest {
         orderDish4 = new OrderDish(4,dish3,order1,1);
 
         order1.setOrderedDishes(Collections.singletonList(orderDish1));
+    }
 
+    @Test
+    void test_should_return_true_when_ingredient_is_present_ok(){
+        assertTrue(dish3.isIngredientPresent(ingredient2));
+    }
 
+    @Test
+    void test_should_return_false_when_ingredient_is_not_present_ok(){
+        assertFalse(dish3.isIngredientPresent(ingredient1));
     }
 }
