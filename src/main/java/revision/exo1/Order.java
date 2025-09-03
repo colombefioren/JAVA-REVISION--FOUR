@@ -78,6 +78,16 @@ public class Order {
       }
     }
 
+    @Override
+    public String toString(){
+        return "Order{" +
+                "id=" + id +
+                ", orderDate=" + orderDate +
+                ", client=" + client +
+                ", orderedDishes=" + orderedDishes +
+                '}';
+    }
+
 
 
 }
