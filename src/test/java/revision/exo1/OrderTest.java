@@ -63,6 +63,7 @@ class OrderTest {
 
     @Test
     void test_should_return_false_when_order_is_not_empty_ok(){
+    System.out.println(order1.showOrderedDishes());
         assertFalse(order1.isOrderEmpty());
     }
 
@@ -70,7 +71,7 @@ class OrderTest {
     void test_should_return_total_ordered_dishes_with_quantity_ok(){
         HashMap<Dish, Integer> orderedDishesWithQuantity = new HashMap<>();
         orderedDishesWithQuantity.put(dish1,2);
-        System.out.println(order1.showDishes());
+        System.out.println(order1.showDishesWithQuantity());
         assertEquals(orderedDishesWithQuantity,order1.getDishesQuantity());
     }
 

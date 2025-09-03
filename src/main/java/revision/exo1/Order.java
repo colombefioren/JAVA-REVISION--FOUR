@@ -19,20 +19,44 @@ public class Order {
         this.orderedDishes = flattedOrderedDishes(orderedDishes);
     }
 
-    public List<OrderDish> flattedOrderedDishes(List<OrderDish> orderedDishes){
-        List<OrderDish> flattenedOrderedDishes = new ArrayList<>();
-        for(int i = 0; i < orderedDishes.size(); i++){
-            for(int j = 0; j < orderedDishes.size(); j++){
-                if(orderedDishes.get(i).getDish().equals(orderedDishes.get(j).getDish()) && i != j){
-                    flattenedOrderedDishes.add(new OrderDish(orderedDishes.get(i).getId(),orderedDishes.get(i).getDish(),orderedDishes.get(i).getOrder(),orderedDishes.get(i).getQuantity() + orderedDishes.get(j).getQuantity()));
-                }
-            }
+    public List<OrderDish> flattedOrderedDishes(List<OrderDish> orderedDishes) {
+        HashMap<Dish, Integer> dishQuantities = new HashMap<>();
+
+        for (OrderDish orderDish : orderedDishes) {
+            dishQuantities.put(
+                    orderDish.getDish(),
+                    dishQuantities.getOrDefault(orderDish.getDish(), 0) + orderDish.getQuantity()
+            );
         }
-        return flattenedOrderedDishes;
+
+        List<OrderDish> flattened = new ArrayList<>();
+        for (Dish dish : dishQuantities.keySet()) {
+            orderedDishes.stream()
+                    .filter(od -> od.getDish().equals(dish))
+                    .findFirst()
+                    .ifPresent(template -> flattened.add(new OrderDish(
+                            template.getId(),
+                            dish,
+                            template.getOrder(),
+                            dishQuantities.get(dish)
+                    )));
+        }
+
+        return flattened;
+    }
+
+
+
+    public String showOrderedDishes(){
+        StringBuilder sb = new StringBuilder();
+        for(OrderDish orderDish : orderedDishes){
+            sb.append(orderDish.getDish().getName()).append(" x").append(orderDish.getQuantity()).append("\n");
+        }
+        return sb.toString();
     }
 
     public void setOrderedDishes(List<OrderDish> orderedDishes) {
-        this.orderedDishes = orderedDishes;
+        this.orderedDishes = flattedOrderedDishes(orderedDishes);
     }
 
     public Order(int id, LocalDate orderDate, Client client) {
@@ -69,7 +93,7 @@ public class Order {
         }
         return dishes;
     }
-    public String showDishes(){
+    public String showDishesWithQuantity(){
         StringBuilder sb = new StringBuilder();
         HashMap<Dish, Integer> dishes = getDishesQuantity();
         for(Dish dish : dishes.keySet()){
