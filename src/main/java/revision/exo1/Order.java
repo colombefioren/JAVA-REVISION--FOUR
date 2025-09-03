@@ -56,16 +56,27 @@ public class Order {
 
     public double totalPrice(){
         double total = 0;
-        for(OrderDish dish : orderedDishes){
-            total += dish.getDish().getPrice() * dish.getQuantity();
+        for(OrderDish orderDish : orderedDishes){
+            total += orderDish.getDish().getPrice() * orderDish.getQuantity();
         }
         return total;
     }
 
     public void combineOrder(Order order){
-      for (OrderDish newDish : order.getOrderedDishes()){
-          for(OrderDish exisitingDish : orderedDishes){
-              if(newDish.getDish() == exisitingDish.getDish())
+        int ancientQuantity = 0;
+        boolean found = false;
+      for (OrderDish newOrderDish : order.getOrderedDishes()){
+          found = false;
+          for(OrderDish existingOrderDish : orderedDishes){
+              if(newOrderDish.getDish() == existingOrderDish.getDish()){
+                  found = true;
+                  ancientQuantity = existingOrderDish.getQuantity();
+                  existingOrderDish.setQuantity(newOrderDish.getQuantity() +  ancientQuantity);
+                  break;
+              }
+          }
+          if(found == false){
+              orderedDishes.add(newOrderDish);
           }
       }
     }
