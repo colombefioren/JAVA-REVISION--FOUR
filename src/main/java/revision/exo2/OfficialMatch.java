@@ -13,10 +13,11 @@ public class OfficialMatch extends FriendlyMatch {
     super.finish();
     if (this.getPoint1() > this.getPoint2()) {
       super.getFighter1().Victory();
-    }
-    else if(this.getPoint1() < this.getPoint2()){
+      super.getFighter2().Defeat();
+    } else if (this.getPoint1() < this.getPoint2()) {
       super.getFighter2().Victory();
-    }else{
+      super.getFighter1().Defeat();
+    } else {
       super.getFighter1().Null();
       super.getFighter2().Null();
     }

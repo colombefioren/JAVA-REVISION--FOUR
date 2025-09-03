@@ -25,14 +25,19 @@ public class Fighter {
     this.palmares.put("Null", 0);
   }
 
-  public void Victory(){
+  public void addTitle(String title) {
+    titleList.add(title);
+  }
+
+  public void Victory() {
     this.palmares.put("Victory", this.palmares.get("Victory") + 1);
   }
-  public void Defeat(){
+
+  public void Defeat() {
     this.palmares.put("Defeat", this.palmares.get("Defeat") + 1);
   }
 
-  public void Null(){
+  public void Null() {
     this.palmares.put("Null", this.palmares.get("Null") + 1);
   }
 

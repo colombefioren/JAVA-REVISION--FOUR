@@ -1,6 +1,5 @@
 package revision.exo2;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,21 +40,6 @@ public class LeagueMatch {
     return matches;
   }
 
-  public FriendlyMatch createMatch(
-      String typeMatch, int idMatch, String place, int date, Fighter fighter1, Fighter fighter2) {
-    switch (typeMatch.toLowerCase()) {
-      case "official":
-        return new OfficialMatch(idMatch, LocalDate.now(), place, fighter1, fighter2);
-      case "friendly":
-        return new FriendlyMatch(idMatch, LocalDate.now(), place, fighter1, fighter2);
-      case "titlematch":
-      case "title match":
-        return new TitleMatch(idMatch, LocalDate.now(), place, fighter1, fighter2);
-      default:
-        throw new IllegalArgumentException("Unknown match type");
-    }
-  }
-
   public List<FriendlyMatch> getEveryMatchOfFighter(Fighter fighter) {
     List<FriendlyMatch> matchesOfFighter = new ArrayList<>();
     for (FriendlyMatch match : matches) {
@@ -64,5 +48,9 @@ public class LeagueMatch {
       }
     }
     return matchesOfFighter;
+  }
+
+  public void addMatch(FriendlyMatch match){
+    matches.add(match);
   }
 }
