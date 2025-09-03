@@ -53,4 +53,14 @@ class OrderTest {
     void test_should_return_false_when_ingredient_is_not_present_ok(){
         assertFalse(dish3.isIngredientPresent(ingredient1));
     }
+
+    @Test
+    void test_should_return_true_when_order_is_empty_ok(){
+        assertTrue(order2.isOrderEmpty());
+    }
+
+    @Test
+    void test_should_return_false_when_order_is_not_empty_ok(){
+        assertFalse(order1.isOrderEmpty());
+    }
 }
