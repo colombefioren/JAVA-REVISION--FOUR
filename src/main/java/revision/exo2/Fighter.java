@@ -50,15 +50,15 @@ public class Fighter {
   }
 
   @Override
-  public boolean equals(Object obj){
-    if(obj == null || getClass() != obj.getClass()) return false;
+  public boolean equals(Object obj) {
+    if (obj == null || getClass() != obj.getClass()) return false;
     if (obj.equals(this)) return true;
     Fighter other = (Fighter) obj;
     return id.equals(other.getId());
   }
 
   @Override
-  public int hashCode(){
-    return Objects.hash(id,name);
+  public int hashCode() {
+    return Objects.hash(id, name);
   }
 }

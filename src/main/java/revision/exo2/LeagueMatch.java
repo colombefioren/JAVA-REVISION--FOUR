@@ -56,14 +56,13 @@ public class LeagueMatch {
     }
   }
 
-  public List<FriendlyMatch> getEveryMatchOfFighter(Fighter fighter){
-      List<FriendlyMatch> matchesOfFighter = new ArrayList<>();
-      for(FriendlyMatch match : matches){
-          if(match.getFighter1().equals(fighter) || match.getFighter2().equals(fighter)){
-              matchesOfFighter.add(match);
-          }
+  public List<FriendlyMatch> getEveryMatchOfFighter(Fighter fighter) {
+    List<FriendlyMatch> matchesOfFighter = new ArrayList<>();
+    for (FriendlyMatch match : matches) {
+      if (match.getFighter1().equals(fighter) || match.getFighter2().equals(fighter)) {
+        matchesOfFighter.add(match);
       }
-      return matchesOfFighter;
+    }
+    return matchesOfFighter;
   }
 }
-
