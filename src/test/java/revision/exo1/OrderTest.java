@@ -4,10 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 class OrderTest {
@@ -25,6 +22,7 @@ class OrderTest {
     Ingredient ingredient1;
     Ingredient ingredient2;
     Ingredient ingredient3;
+    OrderDish orderDish5;
 
     @BeforeEach
     void setup(){
@@ -42,6 +40,7 @@ class OrderTest {
         orderDish2 = new OrderDish(2,dish2,order2,2);
         orderDish3 = new OrderDish(3,dish1,order1,1);
         orderDish4 = new OrderDish(4,dish3,order1,1);
+        orderDish5 = new OrderDish(5,dish1,order2,1);
 
         order1.setOrderedDishes(Arrays.asList(orderDish1,orderDish3));
     }
@@ -63,7 +62,6 @@ class OrderTest {
 
     @Test
     void test_should_return_false_when_order_is_not_empty_ok(){
-    System.out.println(order1.showOrderedDishes());
         assertFalse(order1.isOrderEmpty());
     }
 
@@ -71,7 +69,6 @@ class OrderTest {
     void test_should_return_total_ordered_dishes_with_quantity_ok(){
         HashMap<Dish, Integer> orderedDishesWithQuantity = new HashMap<>();
         orderedDishesWithQuantity.put(dish1,2);
-        System.out.println(order1.showDishesWithQuantity());
         assertEquals(orderedDishesWithQuantity,order1.getDishesQuantity());
     }
 
@@ -82,9 +79,15 @@ class OrderTest {
 
     @Test
     void test_should_return_the_new_ordered_dishes_list_when_combining_ok(){
-        order2.setOrderedDishes(Arrays.asList(orderDish2,orderDish4));
+        order2.setOrderedDishes(Arrays.asList(orderDish2, orderDish4, orderDish5));
         order1.combineOrder(order2);
-        List<OrderDish> expected = Arrays.asList(orderDish1,orderDish3,orderDish2,orderDish4);
-        assertEquals(Arrays.asList(orderDish1,orderDish3,orderDish4),order1.getOrderedDishes());
+
+        HashMap<Dish, Integer> expectedQuantities = new HashMap<>();
+        expectedQuantities.put(dish1, 3);
+        expectedQuantities.put(dish2, 2);
+        expectedQuantities.put(dish3, 1);
+
+        assertEquals(expectedQuantities, order1.getDishesQuantity());
     }
+
 }
