@@ -50,7 +50,7 @@ public class LeagueMatch {
     return matchesOfFighter;
   }
 
-  public void addMatch(FriendlyMatch match){
+  public void addMatch(FriendlyMatch match) {
     matches.add(match);
   }
 }

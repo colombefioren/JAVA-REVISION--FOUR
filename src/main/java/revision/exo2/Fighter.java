@@ -41,6 +41,18 @@ public class Fighter {
     this.palmares.put("Null", this.palmares.get("Null") + 1);
   }
 
+  public int getVictory() {
+    return palmares.get("Victory");
+  }
+
+  public int getDefeat() {
+    return palmares.get("Defeat");
+  }
+
+  public int getNull() {
+    return palmares.get("Null");
+  }
+
   public void setTitleList(List<String> titleList) {
     this.titleList = titleList;
   }
@@ -67,14 +79,14 @@ public class Fighter {
 
   @Override
   public boolean equals(Object obj) {
+    if (this == obj) return true;
     if (obj == null || getClass() != obj.getClass()) return false;
-    if (obj.equals(this)) return true;
     Fighter other = (Fighter) obj;
     return id.equals(other.getId());
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name);
+    return Objects.hash(id);
   }
 }
