@@ -16,7 +16,19 @@ public class Order {
         this.id = id;
         this.orderDate = orderDate;
         this.client = client;
-        this.orderedDishes = orderedDishes;
+        this.orderedDishes = flattedOrderedDishes(orderedDishes);
+    }
+
+    public List<OrderDish> flattedOrderedDishes(List<OrderDish> orderedDishes){
+        List<OrderDish> flattenedOrderedDishes = new ArrayList<>();
+        for(int i = 0; i < orderedDishes.size(); i++){
+            for(int j = 0; j < orderedDishes.size(); j++){
+                if(orderedDishes.get(i).getDish().equals(orderedDishes.get(j).getDish()) && i != j){
+                    flattenedOrderedDishes.add(new OrderDish(orderedDishes.get(i).getId(),orderedDishes.get(i).getDish(),orderedDishes.get(i).getOrder(),orderedDishes.get(i).getQuantity() + orderedDishes.get(j).getQuantity()));
+                }
+            }
+        }
+        return flattenedOrderedDishes;
     }
 
     public void setOrderedDishes(List<OrderDish> orderedDishes) {

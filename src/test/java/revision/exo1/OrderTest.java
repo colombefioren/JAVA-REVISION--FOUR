@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 class OrderTest {
@@ -71,5 +72,18 @@ class OrderTest {
         orderedDishesWithQuantity.put(dish1,2);
         System.out.println(order1.showDishes());
         assertEquals(orderedDishesWithQuantity,order1.getDishesQuantity());
+    }
+
+    @Test
+    void test_should_return_total_price_of_ordered_dishes_ok(){
+        assertEquals(20,order1.totalPrice());
+    }
+
+    @Test
+    void test_should_return_the_new_ordered_dishes_list_when_combining_ok(){
+        order2.setOrderedDishes(Arrays.asList(orderDish2,orderDish4));
+        order1.combineOrder(order2);
+        List<OrderDish> expected = Arrays.asList(orderDish1,orderDish3,orderDish2,orderDish4);
+        assertEquals(Arrays.asList(orderDish1,orderDish3,orderDish4),order1.getOrderedDishes());
     }
 }
