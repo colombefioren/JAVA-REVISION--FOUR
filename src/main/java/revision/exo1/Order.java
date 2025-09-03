@@ -57,6 +57,14 @@ public class Order {
         }
         return dishes;
     }
+    public String showDishes(){
+        StringBuilder sb = new StringBuilder();
+        HashMap<Dish, Integer> dishes = getDishesQuantity();
+        for(Dish dish : dishes.keySet()){
+            sb.append(dish.getName()).append(" x").append(dishes.get(dish)).append("\n");
+        }
+        return sb.toString();
+    }
 
     public double totalPrice(){
         double total = 0;
@@ -95,6 +103,8 @@ public class Order {
     public double getMostExpenseDish(){
         return orderedDishes.stream().mapToDouble(orderDish -> orderDish.getDish().getPrice()).max().orElse(0);
     }
+
+
 
     @Override
     public String toString(){

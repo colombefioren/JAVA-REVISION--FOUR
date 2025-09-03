@@ -69,6 +69,7 @@ class OrderTest {
     void test_should_return_total_ordered_dishes_with_quantity_ok(){
         HashMap<Dish, Integer> orderedDishesWithQuantity = new HashMap<>();
         orderedDishesWithQuantity.put(dish1,2);
+        System.out.println(order1.showDishes());
         assertEquals(orderedDishesWithQuantity,order1.getDishesQuantity());
     }
 }
