@@ -88,6 +88,10 @@ public class Order {
        return totalPrice;
     }
 
+    public double getMostExpenseDish(){
+        return orderedDishes.stream().mapToDouble(orderDish -> orderDish.getDish().getPrice()).max().orElse(0);
+    }
+
     @Override
     public String toString(){
         return "Order{" +
