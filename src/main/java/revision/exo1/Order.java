@@ -50,10 +50,10 @@ public class Order {
         return orderedDishes;
     }
 
-    public HashMap<OrderDish, Integer> getDishesQuantity(){
-        HashMap<OrderDish, Integer> dishes = new HashMap<>();
-        for(OrderDish dish : orderedDishes){
-            dishes.put(dish, dishes.getOrDefault(dish, dish.getQuantity()) + dish.getQuantity());
+    public HashMap<Dish, Integer> getDishesQuantity(){
+        HashMap<Dish, Integer> dishes = new HashMap<>();
+        for(OrderDish orderDish : orderedDishes){
+            dishes.put(orderDish.getDish(), dishes.getOrDefault(orderDish.getDish(), 0) + orderDish.getQuantity());
         }
         return dishes;
     }

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 class OrderTest {
@@ -41,7 +42,7 @@ class OrderTest {
         orderDish3 = new OrderDish(3,dish1,order1,1);
         orderDish4 = new OrderDish(4,dish3,order1,1);
 
-        order1.setOrderedDishes(Collections.singletonList(orderDish1));
+        order1.setOrderedDishes(Arrays.asList(orderDish1,orderDish3));
     }
 
     @Test
@@ -62,5 +63,12 @@ class OrderTest {
     @Test
     void test_should_return_false_when_order_is_not_empty_ok(){
         assertFalse(order1.isOrderEmpty());
+    }
+
+    @Test
+    void test_should_return_total_ordered_dishes_with_quantity_ok(){
+        HashMap<Dish, Integer> orderedDishesWithQuantity = new HashMap<>();
+        orderedDishesWithQuantity.put(dish1,2);
+        assertEquals(orderedDishesWithQuantity,order1.getDishesQuantity());
     }
 }
